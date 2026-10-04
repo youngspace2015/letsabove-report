@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>어보브 렛츠팝 플레이스 기획</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f5f2; --card:#ffffff; --ink:#1d1d1f; --sub:#5f6168; --line:#e4e2dc;
+  --above:#1f4e79; --above-soft:#e6eef7;
+  --pop:#e0602b; --pop-soft:#fcebe2;
+  --ok:#1f8a5b; --ok-soft:#e3f4ec; --no:#b3473b; --no-soft:#f8e6e3;
+  --mid:#b07a12; --mid-soft:#f8efd9;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#151618; --card:#1f2023; --ink:#ececec; --sub:#a3a5ab; --line:#33353a;
+    --above:#7fb0e0; --above-soft:#1c2a38;
+    --pop:#f2905f; --pop-soft:#3a2419;
+    --ok:#5cc996; --ok-soft:#173026; --no:#e98476; --no-soft:#3a1f1b;
+    --mid:#e2b553; --mid-soft:#352a14;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#151618; --card:#1f2023; --ink:#ececec; --sub:#a3a5ab; --line:#33353a;
+  --above:#7fb0e0; --above-soft:#1c2a38;
+  --pop:#f2905f; --pop-soft:#3a2419;
+  --ok:#5cc996; --ok-soft:#173026; --no:#e98476; --no-soft:#3a1f1b;
+  --mid:#e2b553; --mid-soft:#352a14;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans KR",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-size:16px;line-height:1.65;word-break:keep-all}
+.wrap{max-width:680px;margin:0 auto;padding:28px 16px 64px}
+h1,h2,h3{line-height:1.35;margin:0}
+.eyebrow{font-size:13px;color:var(--sub);letter-spacing:.02em}
+h1{font-size:26px;font-weight:900;margin:6px 0 4px}
+.date{font-size:13px;color:var(--sub)}
+.hero{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 20px;margin-top:18px}
+.hero .lead{font-size:19px;font-weight:700;margin:0 0 18px}
+.hero .lead em{font-style:normal;color:var(--above)}
+.hero .lead em.p{color:var(--pop)}
+.cards{display:grid;gap:10px}
+.c{border-radius:14px;padding:14px 16px;background:var(--bg)}
+.c .t{font-size:13px;color:var(--sub);font-weight:500}
+.c .v{font-size:17px;font-weight:700;margin-top:2px}
+.c .d{font-size:14px;color:var(--sub);margin-top:4px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.tag{display:inline-block;font-size:13px;font-weight:700;border-radius:999px;padding:2px 10px}
+.tag.a{background:var(--above-soft);color:var(--above)}
+.tag.p{background:var(--pop-soft);color:var(--pop)}
+.more{text-align:center;color:var(--sub);font-size:14px;margin-top:18px}
+section{margin-top:36px}
+h2{font-size:20px;font-weight:900;margin-bottom:12px}
+h2 .n{color:var(--sub);font-weight:500;margin-right:6px}
+p{margin:0 0 10px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+.muted{color:var(--sub);font-size:14px}
+.fork{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.fork div{border-radius:14px;padding:14px;text-align:center}
+.fork .a{background:var(--above-soft)} .fork .p{background:var(--pop-soft)}
+.fork b{display:block;font-size:17px}
+.fork .a b{color:var(--above)} .fork .p b{color:var(--pop)}
+.fork small{display:block;color:var(--sub);font-size:13px;margin-top:2px}
+.fork .kw{margin-top:8px;font-weight:700;font-size:15px}
+.root{text-align:center;font-size:14px;color:var(--sub);margin-bottom:4px}
+.kwlist{list-style:none;margin:0;padding:0}
+.kwlist li{padding:12px 0;border-top:1px solid var(--line)}
+.kwlist li:first-child{border-top:0;padding-top:2px}
+.kwhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px}
+.kwname{font-weight:700;font-size:16px}
+.num{font-size:13px;color:var(--sub)}
+.lv{font-size:12px;font-weight:700;border-radius:6px;padding:1px 7px}
+.lv.lo{background:var(--ok-soft);color:var(--ok)}
+.lv.md{background:var(--mid-soft);color:var(--mid)}
+.lv.hi{background:var(--no-soft);color:var(--no)}
+.why{font-size:14.5px;margin-top:3px}
+.grp{font-size:13px;font-weight:700;margin:16px 0 6px;color:var(--sub)}
+.grp:first-child{margin-top:0}
+.tags{font-size:14px;color:var(--sub)}
+.side-a{border-left:4px solid var(--above)} .side-p{border-left:4px solid var(--pop)}
+.no li .kwname{color:var(--no)}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th,td{padding:9px 6px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:13px;color:var(--sub);font-weight:500}
+td.r{text-align:right;white-space:nowrap;font-weight:700}
+.week{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
+.week div{background:var(--bg);border-radius:12px;padding:12px 4px}
+.week b{display:block;font-size:22px}
+.week span{font-size:13px;color:var(--sub)}
+.tl{list-style:none;margin:0;padding:0;position:relative}
+.tl li{position:relative;padding:0 0 16px 22px}
+.tl li::before{content:"";position:absolute;left:4px;top:8px;width:10px;height:10px;border-radius:50%;background:var(--ink)}
+.tl li::after{content:"";position:absolute;left:8px;top:20px;bottom:0;width:2px;background:var(--line)}
+.tl li:last-child::after{display:none}
+.tl .when{font-weight:700}
+.ba{display:grid;gap:8px}
+.ba .row{display:grid;grid-template-columns:52px 1fr;gap:8px;align-items:start;font-size:14.5px}
+.ba .lab{font-size:12px;font-weight:700;border-radius:6px;padding:2px 0;text-align:center}
+.ba .before .lab{background:var(--line);color:var(--sub)}
+.ba .after .lab{background:var(--ok-soft);color:var(--ok)}
+.ba .before .txt{color:var(--sub);text-decoration:line-through;text-decoration-color:var(--no)}
+.ba .after .txt{font-weight:700}
+.chg{list-style:none;margin:14px 0 0;padding:0}
+.chg li{padding:10px 0;border-top:1px solid var(--line);font-size:14.5px}
+.chg b{display:block;font-size:15px}
+.link3{text-align:center;margin-top:8px}
+.link3 .hub{display:inline-block;background:var(--ink);color:var(--card);font-weight:700;border-radius:999px;padding:6px 16px}
+.link3 .arrows{display:flex;justify-content:center;gap:70px;font-size:20px;color:var(--sub);line-height:1.4}
+.link3 .leafs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.link3 .leafs div{background:var(--bg);border-radius:12px;padding:10px 6px;font-weight:700}
+.link3 small{display:block;font-weight:400;color:var(--sub);font-size:13px}
+.ov{font-size:14px}
+.ov th{text-align:center;font-size:15px;font-weight:900}
+.ov th.a{color:var(--above);background:var(--above-soft)} .ov th.p{color:var(--pop);background:var(--pop-soft)}
+.ov td{line-height:1.7;width:41%}
+.ov td.g{width:18%;font-weight:700;font-size:13px;color:var(--sub)}
+.ov td.g small{display:block;font-weight:400;font-size:11px}
+.ov td.t{font-size:12.5px;color:var(--sub);line-height:1.55}
+.kwt{table-layout:fixed} .kwt th:nth-child(2){width:78px} .kwt th:nth-child(3){width:76px}
+.kwt td{padding:11px 4px} .kwt td:first-child,.kwt th:first-child{padding-left:0}
+.kwt .why{font-size:13.5px;color:var(--sub);margin-top:2px}
+.kwt td:nth-child(3){white-space:nowrap}
+.end{margin-top:40px;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 18px}
+.end b{font-size:17px}
+footer{text-align:center;color:var(--sub);font-size:13px;margin-top:24px}
+@media (min-width:560px){ .cards{grid-template-columns:1fr} h1{font-size:30px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ───────── 요약 ───────── -->
+  <div class="eyebrow">호텔 렛츠 어보브 · 호텔 렛츠 팝 종로점</div>
+  <h1>어보브 렛츠팝 네이버플레이스 기획</h1>
+
+  <div class="hero">
+    <p class="lead">같은 건물의 두 호텔이 서로 손님을 뺏지 않도록,<br>
+      <em>어보브는 '호텔'</em>, <em class="p">렛츠팝은 '숙소'</em> 검색어로 나눴습니다.</p>
+
+    <div class="cards">
+      <div class="c">
+        <div class="t">🔑 블로그 키워드</div>
+        <div class="split">
+          <div><span class="tag a">어보브</span><div class="d">종로호텔 · 청계천 · 인사동</div></div>
+          <div><span class="tag p">렛츠팝</span><div class="d">종로숙소 · 가성비 · 종로3가</div></div>
+        </div>
+      </div>
+      <div class="c">
+        <div class="t">📅 발행</div>
+        <div class="v">호텔마다 블로그 · 클립 · 영수증리뷰 월 10건씩</div>
+        <div class="d">주 2~3회 불규칙하게 나눠 올립니다. 클립에 플레이스·블로그 리뷰를 연결해 노출을 함께 끌어올립니다. 10월 말, 발행된 링크를 정리해 보내드립니다.</div>
+      </div>
+      <div class="c">
+        <div class="t">🏨 네이버 플레이스 개편</div>
+        <div class="v">이번 주 1차 개편 완료 → 3개월간 계속 개선</div>
+        <div class="d">대표키워드 · 소개글 · 오시는 길 · 객실 가격표 · 대표사진 20장</div>
+      </div>
+    </div>
+    <div class="more">왜 이렇게 정했는지는 아래에 정리했습니다 ↓</div>
+  </div>
+
+  <!-- ───────── 1. 왜 나눴나 ───────── -->
+  <section>
+    <h2><span class="n">1</span>왜 두 호텔의 키워드를 나눴나요?</h2>
+    <div class="box">
+      <p>두 호텔은 주소가 같습니다. 같은 검색어로 글을 올리면 <b>두 호텔이 같은 자리를 놓고 서로 경쟁</b>하게 됩니다.
+        그래서 호텔 성격에 맞춰 찾아오는 손님을 나눴습니다.</p>
+      <div class="root">청계천로 99 · 한 건물</div>
+      <div class="fork">
+        <div class="a"><b>어보브</b><small>9~10층</small>
+          <div class="kw">'호텔'로<br>검색하는 손님</div><small>청계천 통창뷰 · 인사동</small></div>
+        <div class="p"><b>렛츠팝</b><small>5~6층</small>
+          <div class="kw">'숙소·가성비'로<br>검색하는 손님</div><small>종로3가역 5분 · 3~4인실</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── 2. 한눈에 ───────── -->
+  <section>
+    <h2><span class="n">2</span>키워드 한눈에 보기</h2>
+    <div class="box" style="padding:12px">
+      <table class="ov">
+        <tr><th></th><th class="a">어보브</th><th class="p">렛츠팝</th></tr>
+        <tr><td class="g">메인<small>제목 맨 앞</small></td>
+          <td><b>종로호텔</b><br><b>서울청계천숙소</b></td>
+          <td><b>종로숙소</b><br><b>종로3가숙소</b><br><b>종로숙소가성비</b></td></tr>
+        <tr><td class="g">서브<small>제목 뒤 · 본문</small></td>
+          <td>인사동호텔<br>서울종로호텔<br>종로구호텔<br>청계천호텔<br>청계천숙소<br>서울청계천호텔</td>
+          <td>서울가성비호텔<br>종로숙박<br>종로가성비호텔<br>서울종로숙소가성비<br>청계천가성비숙소</td></tr>
+        <tr><td class="g">태그</td>
+          <td class="t">서울호텔추천 · 종로호텔추천 · 서울종로호텔추천 · 청계천호텔추천 · 청계천숙소추천 · 청계천숙박 · 어보브호텔종로</td>
+          <td class="t">종로숙소추천 · 서울종로숙소추천 · 서울종로가성비호텔 · 청계천가성비호텔 · 종로3인숙소 · 종로4인숙소</td></tr>
+        <tr><td class="g">담당 축</td><td class="t">호텔 · 청계천 · 인사동</td><td class="t">숙소 · 가성비 · 종로3가 · 3~4인</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- ───────── 2. 어보브 ───────── -->
+  <section>
+    <h2><span class="n">3</span>어보브 키워드</h2>
+    <div class="box side-a">
+      <div class="grp">메인 — 글 제목 맨 앞에 넣는 키워드</div>
+      <table class="kwt"><tr><th>키워드 · 고른 이유</th><th style="text-align:right">월검색</th><th>경쟁</th></tr><tr><td><b>종로호텔</b><div class="why">이 지역에서 가장 많이 찾는 호텔 검색어인데 경쟁은 낮은 편입니다. '호텔'을 찾는 손님을 맡는 어보브와 정확히 맞습니다.</div></td><td class="r">4,820</td><td><span class="lv lo">낮음</span></td></tr><tr><td><b>서울청계천숙소</b><div class="why">관련 글이 865개뿐이라 조사한 키워드 중 가장 들어가기 쉽습니다. 청계천 바로 앞이라는 강점이 그대로 통합니다.</div></td><td class="r">250</td><td><span class="lv lo">가장 낮음</span></td></tr></table>
+      <div class="grp">서브 — 제목 뒤쪽 · 본문에 넣는 키워드</div>
+      <table class="kwt"><tr><th>키워드 · 고른 이유</th><th style="text-align:right">월검색</th><th>경쟁</th></tr><tr><td><b>인사동호텔</b><div class="why">인사동길까지 걸어서 7분. 경쟁 호텔(베뉴지·온도) 두 곳 모두 쓰지 않는 검색어라 먼저 자리 잡습니다.</div></td><td class="r">2,190</td><td><span class="lv md">보통</span></td></tr><tr><td><b>서울종로호텔</b><div class="why">지금 1위가 경쟁사 베뉴지 글입니다. 그 자리를 가져오는 것이 목표입니다.</div></td><td class="r">1,440</td><td><span class="lv md">보통</span></td></tr><tr><td><b>종로구호텔</b><div class="why">2위가 경쟁사 베뉴지 글입니다. 함께 자리를 노립니다.</div></td><td class="r">720</td><td><span class="lv md">보통</span></td></tr><tr><td><b>청계천호텔 · 청계천숙소</b><div class="why">전 객실 청계천 통창뷰인 어보브가 '청계천'을 맡습니다.</div></td><td class="r">440 · 330</td><td><span class="lv md">보통</span></td></tr><tr><td><b>서울청계천호텔</b><div class="why">어보브 후기가 이미 2위입니다. 1위로 굳힙니다.</div></td><td class="r">80</td><td><span class="lv lo">낮음</span></td></tr></table>
+      <div class="grp">태그로만 넣는 키워드</div>
+      <div class="tags">서울호텔추천 · 종로호텔추천 · 서울종로호텔추천 · 청계천호텔추천 · 청계천숙소추천 · 청계천숙박 · 어보브호텔종로</div>
+    </div>
+  </section>
+
+  <!-- ───────── 3. 렛츠팝 ───────── -->
+  <section>
+    <h2><span class="n">4</span>렛츠팝 키워드</h2>
+    <div class="box side-p">
+      <div class="grp">메인</div>
+      <table class="kwt"><tr><th>키워드 · 고른 이유</th><th style="text-align:right">월검색</th><th>경쟁</th></tr><tr><td><b>종로숙소</b><div class="why">검색량이 큰 키워드 중 경쟁이 가장 낮습니다. '숙소'로 찾는 분은 가격을 중요하게 보셔서 렛츠팝과 맞습니다.</div></td><td class="r">3,060</td><td><span class="lv lo">낮음</span></td></tr><tr><td><b>종로3가숙소</b><div class="why">종로3가역 15번 출구에서 평지로 5분. 위치가 곧 강점인 검색어입니다.</div></td><td class="r">840</td><td><span class="lv lo">낮음</span></td></tr><tr><td><b>종로숙소가성비</b><div class="why">지금 1~3위가 모두 공용 욕실 게스트하우스입니다. 비슷한 가격에 <b>객실마다 개인 욕실</b>이 있는 렛츠팝이 비교에서 유리합니다.</div></td><td class="r">210</td><td><span class="lv lo">낮음</span></td></tr></table>
+      <div class="grp">서브</div>
+      <table class="kwt"><tr><th>키워드 · 고른 이유</th><th style="text-align:right">월검색</th><th>경쟁</th></tr><tr><td><b>서울가성비호텔</b><div class="why">검색량은 크지만 1위가 5성급 호캉스 글입니다. 한 번에 이기기보다 꾸준히 쌓아서 노립니다.</div></td><td class="r">4,020</td><td><span class="lv md">보통</span></td></tr><tr><td><b>종로숙박 · 종로가성비호텔</b><div class="why">렛츠팝 성격(숙박·가성비)과 맞는 중간 크기 검색어입니다.</div></td><td class="r">310 · 100</td><td><span class="lv md">보통</span></td></tr><tr><td><b>서울종로숙소가성비</b><div class="why">이 검색어도 상위가 게스트하우스라 개인 욕실 강점이 통합니다.</div></td><td class="r">140</td><td><span class="lv md">보통</span></td></tr><tr><td><b>청계천가성비숙소</b><div class="why">'청계천'은 어보브가 맡되, '가성비'가 붙은 검색어만 렛츠팝이 맡습니다.</div></td><td class="r">15</td><td><span class="lv md">보통</span></td></tr></table>
+      <div class="grp">태그 · 객실별 본문에 넣는 키워드</div>
+      <div class="tags">종로숙소추천 · 서울종로숙소추천 · 서울종로가성비호텔 · 청계천가성비호텔 · 종로3인숙소(디럭스 트윈 글) · 종로4인숙소(프리미엄 트윈 글)</div>
+    </div>
+  </section>
+
+  <!-- ───────── 4. 고르지 않은 키워드 ───────── -->
+  <section>
+    <h2><span class="n">5</span>이 키워드는 왜 안 하나요?</h2>
+    <div class="box">
+      <ul class="kwlist no">
+        <li><div class="kwhead"><span class="kwname">명동호텔</span><span class="num">월 7,250회</span></div>
+          <div class="why">검색량은 가장 크지만, '명동호텔'을 찾는 분은 명동 안에 있는 호텔을 원합니다. 명동에는 대형 호텔이 수십 곳이라 그 사이에서는 묻히기 쉽습니다.
+            우리가 이길 수 있는 <b>종로·청계천에 힘을 모았습니다.</b></div></li>
+        <li><div class="kwhead"><span class="kwname">남산호텔 · 경복궁호텔 · 서울호텔</span></div>
+          <div class="why">남산·경복궁은 걸어가기엔 거리가 있고, '서울호텔'은 너무 넓은 검색어입니다. 우리 호텔을 고를 가능성이 낮은 분들에게 노출됩니다.</div></li>
+        <li><div class="kwhead"><span class="kwname">을지로호텔</span><span class="num">월 1,380회</span></div>
+          <div class="why">상위 10개 글 중 7개가 '호텔국도 뷔페' 맛집 글입니다. 숙박 후기가 들어갈 자리가 거의 없습니다.</div></li>
+        <li><div class="kwhead"><span class="kwname">서울호텔추천 · 종로호텔추천</span></div>
+          <div class="why">관련 글이 189만 개, 12만 개로 경쟁이 매우 높습니다. 본문에서 정면 승부하지 않고 <b>태그로만</b> 넣습니다.</div></li>
+      </ul>
+      <p class="muted" style="margin-top:10px">※ 명동·남산·경복궁·서울호텔은 지금 어보브 플레이스 대표키워드에 들어가 있어서, 이번 개편 때 함께 교체합니다(8번 참고).</p>
+    </div>
+  </section>
+
+
+  <!-- ───────── 5. 발행 일정 ───────── -->
+  <section>
+    <h2><span class="n">6</span>발행 일정</h2>
+    <div class="box">
+      <p><b>매달, 호텔마다</b> 아래처럼 올라갑니다.</p>
+      <div class="week">
+        <div><b>10</b><span>블로그 리뷰</span></div>
+        <div><b>10</b><span>네이버 클립</span></div>
+        <div><b>10</b><span>영수증 리뷰</span></div>
+      </div>
+      <p class="muted" style="margin-top:12px">두 호텔을 합치면 한 달에 60건입니다. 정해진 요일에 몰아서 올리면 광고처럼 보일 수 있어서, <b>주 2~3회 요일을 섞어</b> 자연스럽게 나눠 올립니다.</p>
+      <ul class="tl" style="margin-top:16px">
+        <li><div class="when">10월 첫째 주 (~10/10)</div>플레이스 1차 개편 완료 · 발행 시작</li>
+        <li><div class="when">10월 매주</div>호텔별 블로그 · 클립 · 영수증 리뷰 주 2~3회</li>
+        <li><div class="when">10월 말</div>그동안 발행된 블로그 · 클립 · 영수증 리뷰 <b>링크를 한 번에 정리</b>해서 보내드립니다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ───────── 6. 클립 연동 ───────── -->
+  <section>
+    <h2><span class="n">7</span>클립 · 블로그 · 플레이스를 하나로 연결합니다</h2>
+    <div class="box">
+      <p>네이버 클립(짧은 세로 영상)을 올릴 때 <b>호텔 플레이스와 블로그 리뷰를 함께 연결</b>합니다.
+        영상을 본 분이 바로 플레이스(위치·예약)나 블로그 후기로 넘어갈 수 있게 길을 열어 두는 것입니다.</p>
+      <div class="link3">
+        <div class="hub">🎬 네이버 클립</div>
+        <div class="arrows"><span>↙</span><span>↘</span></div>
+        <div class="leafs"><div>🏨 플레이스<small>위치 · 예약</small></div><div>📝 블로그 리뷰<small>자세한 후기</small></div></div>
+      </div>
+      <p style="margin-top:12px">세 곳이 서로 손님을 보내 주는 구조라, 클립 조회가 늘수록 <b>플레이스와 블로그 리뷰의 노출도 함께 올라갑니다.</b>
+        글 하나, 영상 하나가 따로 노는 것보다 같은 노력으로 더 많이 보이게 됩니다.</p>
+    </div>
+  </section>
+
+  <!-- ───────── 7. 플레이스 개편 ───────── -->
+  <section>
+    <h2><span class="n">8</span>플레이스 개편 — 무엇이 바뀌나요?</h2>
+    <div class="box side-a">
+      <span class="tag a">어보브</span> <span class="muted">대표키워드</span>
+      <div class="ba" style="margin-top:8px">
+        <div class="row before"><span class="lab">지금</span><span class="txt">명동호텔 · 종로호텔 · 서울호텔 · 남산호텔 · 경복궁호텔</span></div>
+        <div class="row after"><span class="lab">개편</span><span class="txt">종로호텔 · 인사동호텔 · 서울종로호텔 · 종로구호텔 · 청계천호텔</span></div>
+      </div>
+    </div>
+    <div class="box side-p" style="margin-top:10px">
+      <span class="tag p">렛츠팝</span> <span class="muted">대표키워드</span>
+      <div class="ba" style="margin-top:8px">
+        <div class="row before"><span class="lab">지금</span><span class="txt">종로호스텔 · 종로호텔 · 종로숙소 · 서울숙소</span></div>
+        <div class="row after"><span class="lab">개편</span><span class="txt">종로숙소 · 종로3가숙소 · 종로가성비숙소 · 서울가성비호텔 · 종로호스텔</span></div>
+      </div>
+    </div>
+    <div class="box" style="margin-top:10px">
+      <p style="margin:0"><b>이번 주 1차 개편 — 두 호텔 공통</b></p>
+      <ul class="chg">
+        <li><b>소개글</b>청계천 통창뷰 · 객실별 개인 욕실 · 2~4인 객실 구성을 앞에 배치. 네이버 검색과 AI 요약이 잘 읽어 가도록 정리했습니다.</li>
+        <li><b>찾아오시는 길</b>역 출구 · 버스 · 공항버스 안내에 건물 앞 공영주차장 요금까지 추가했습니다.</li>
+        <li><b>객실 가격표 (신규)</b>경쟁 호텔 두 곳은 가격표를 비워 두었습니다. 객실별 인원 · 침대 · 욕실 정보를 채워서 비교할 때 먼저 눈에 띄게 합니다.</li>
+        <li><b>대표사진 20장</b>보정을 마치고, 청계천뷰 창가 사진을 첫 장으로 순서를 다시 정했습니다.</li>
+      </ul>
+      <p class="muted" style="margin:12px 0 0">플레이스는 한 번 바꾸고 끝내지 않습니다. 앞으로 <b>3개월 동안</b> 반응을 보면서 키워드 · 사진 · 소개글을 계속 다듬어 나가겠습니다.</p>
+    </div>
+  </section>
+
+  <div class="end">
+    <b>10월 말에 발행 링크 정리본으로 다시 보고드리겠습니다.</b>
+    <p class="muted" style="margin:8px 0 0">궁금하신 점은 언제든 편하게 말씀 주세요.</p>
+  </div>
+  <footer>키워드 수치: 네이버 검색광고 월간 검색수 · 블로그 문서수</footer>
+</div>
+</body>
+</html>
